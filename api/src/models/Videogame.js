@@ -30,11 +30,11 @@ module.exports = (sequelize) => {
     },
     rating: {
       type: DataTypes.FLOAT
-    },/* 
+    },
     created:{
       type: DataTypes.BOOLEAN,
       defaultValue: true
-    } */
+    }
   }, {
     timestamps: false,
   });
