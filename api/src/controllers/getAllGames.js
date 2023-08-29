@@ -5,6 +5,7 @@ const { API_KEY } = process.env;
 
 const getAllGames = async () => {
     const customGames = await Videogame.findAll({
+        attributes: ["name", "description", "platforms", "background_image", "released", "rating"],
         include: Genres
     });
 
@@ -15,15 +16,27 @@ const getAllGames = async () => {
     while (i < 5) {
         const response = await axios.get(apiUrl, {
             headers: {
-                "Accept-Encoding": "null",
+                "Accept-Encoding": "null",// para desabilitar la codificacion automatica
             },
         });
+
         const { data } = response;
-        apiGames = apiGames.concat(data.results)
-        apiUrl = data.next;
+        let games = data.results;
+
+        games = games.map(game => ({//devuelve un nuevo objeto con las propiedades que necesito
+            name: game.name,
+            description: game.description,
+            platforms: game.platforms,
+            background_image: game.background_image,
+            released: game.released,
+            rating: game.rating,
+            genres: game.genres
+        }))
+
+        apiGames = apiGames.concat(games);
+        apiUrl = data.next;//url de la siguiente página de resultados de la API
         i++;
     }
-    //-----------------------------------------------------------
 
     return apiGames.concat(customGames)
 
