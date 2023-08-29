@@ -7,19 +7,19 @@ const {getGamesById} = require("../controllers/getGamesById");
 const {getAllGames} = require("../controllers/getAllGames");
 const {getGamesByName} = require("../controllers/getGamesByName");
 //getGamesHandler Hara 2 cosas nos traera todos los games o Los games por Name
-// a travez de /videogames/?name="Fortnite"
+// a travez de /videogames/?name=Fortnite
 const getGamesHandler = async(req, res) => {//query
     const { name } = req.query;
     if (name) {
       try {
-      const data = await getGamesByName(name);
+      const data = await getGamesByName(name);///videogames/?name=Fortnite
       res.send(data);
       } catch (error) {
         res.status(404).send(error);
       }
     } else {
       try {
-        const data = await getAllGames();
+        const data = await getAllGames();//videogames
         res.send(data);
       } catch (error) {
         res.status(500).send(error)
