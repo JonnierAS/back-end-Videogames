@@ -10,22 +10,33 @@ const getGamesByName = async (name) => {
             "Accept-Encoding": "null",
         },
     });
-    const apiGames = response.data;
+    const { data } = response;
+    const apiGames = data.results;
+    const modifiedApiGames = apiGames.map(game => ({ 
+        name: game.name,
+        description: game.description,
+        platforms: game.platforms,
+        background_image: game.background_image,
+        released: game.released,
+        rating: game.rating,
+        genres: game.genres
+    }))
     const customGames = await Videogame.findAll({
         where: {
             name: {
-                [Op.iLike]: `%${name}`,
+                [Op.iLike]: `%${name}`,//busca el nombre sin importar mayus o minus
             },
         },
         include: Genres
+        
     });
-    if (!apiGames.results.length && !customGames.length) {
+    if (!apiGames.length && !customGames.length) {
         throw {
             status: false,
             message: 'Not Found!'
         }
     }
-    return [...customGames, ...apiGames.results].slice(0, 15)
+    return [...customGames, ...modifiedApiGames].slice(0, 15)
 };
 
 
