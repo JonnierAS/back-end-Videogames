@@ -8,11 +8,12 @@ const getGamesById = async(id)=>{
   if (numericId) {//si es verdadero hace la peticion
     const fetchedGame = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`, {
       headers: {
-        "Accept-Encoding": "null",
+        "Accept-Encoding": "null",// para desabilitar la codificacion automatica
       },    
     });
     const fetchedGameArray = [fetchedGame.data];//guardo el juego obtenido en la variable
     const modifiedGame = fetchedGameArray.map(game => ({//devuelve un nuevo objeto con las props indicadas
+      id:game.id,
       name: game.name,
       description: game.description,
       platforms: game.platforms,
@@ -21,6 +22,7 @@ const getGamesById = async(id)=>{
       rating: game.rating,
       genres: game.genres
   }))
+  
   return modifiedGame;
   }
 
@@ -30,7 +32,7 @@ const getGamesById = async(id)=>{
     include: Genres //debe incluir los generos asociados en la consulta
   });
   if (!detail) throw { message: "Not Found!" };
-  return detail;
+  return [detail];
 };
 
 
