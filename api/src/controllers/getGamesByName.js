@@ -13,6 +13,7 @@ const getGamesByName = async (name) => {
     const { data } = response;
     const apiGames = data.results;
     const modifiedApiGames = apiGames.map(game => ({ 
+        id: game.id,
         name: game.name,
         description: game.description,
         platforms: game.platforms,
