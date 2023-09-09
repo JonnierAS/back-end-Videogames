@@ -22,7 +22,14 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use(router);
+server.get('/', (req,res) => {
+  res.send({
+    status: 'ok',
+    message: 'Servidor corriendo correctamente !'
+  })
+})
+
+server.use("/", router);
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
