@@ -9,12 +9,12 @@ const getGenres = async () => {
     if (storedGenres.length) {
         return storedGenres
     }
-    const res = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`, {
+    const response = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`, {
         headers: {
             "Accept-Encoding": "null",
         },
     })
-    const { results } = res.data
+    const { results } = response.data
     const genres = results.map(genre => ({
         id: genre.id,
         name: genre.name
