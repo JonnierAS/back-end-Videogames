@@ -29,7 +29,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING
     },
     rating: {
-      type: DataTypes.FLOAT
+      type: DataTypes.DECIMAL(5,2),
+      allowNull:false
     },
     created:{
       type: DataTypes.BOOLEAN,
