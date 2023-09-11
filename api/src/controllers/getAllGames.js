@@ -13,7 +13,7 @@ const getAllGames = async () => {
     let apiUrl = `https://api.rawg.io/api/games?key=${API_KEY}`;
     // gets the first 60 results, default page-size = 15 results
     let i = 0;
-    while (i < 6) {
+    while (i < 5) {
         const response = await axios.get(apiUrl);
 /* 
         {
