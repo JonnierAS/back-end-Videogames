@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const router = require('./routes/index.js');
 const genresRouter = require("./routes/genresRouter");
-const  {videoGamesRouter} = require("./routes/videoGamesRouter")
+const  videoGamesRouter = require("./routes/videoGamesRouter")
 
 require('./db.js');
 
