@@ -15,4 +15,4 @@ videoGamesRouter.get("/:id", getGamesByIdHandler);
 
 videoGamesRouter.post("/",createGamesHandler);
 
-module.exports = videoGamesRouter;
+module.exports = {videoGamesRouter};
