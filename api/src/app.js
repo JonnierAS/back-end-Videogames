@@ -3,8 +3,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 // const router = require('./routes/index.js');
-const genresRouter = require("./routes/genresRouter");
-const  videoGamesRouter = require("./routes/videoGamesRouter")
+const genresRouter = require("./routes/genresRouter.js");
+const  videoGamesRouter = require("./routes/videoGamesRouter.js")
 
 require('./db.js');
 
