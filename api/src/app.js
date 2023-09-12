@@ -2,13 +2,15 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const router = require('./routes/index.js');
+// const router = require('./routes/index.js');
+const genresRouter = require("./routes/genresRouter");
+const  {videoGamesRouter} = require("./routes/videoGamesRouter")
 
 require('./db.js');
 
 const server = express();
 
-server.name = 'API';
+// server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
@@ -29,7 +31,8 @@ server.get('/', (req,res) => {
   })
 })
 
-server.use("/", router);
+server.use("/videogames", videoGamesRouter);
+server.use("/genres", genresRouter);
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
