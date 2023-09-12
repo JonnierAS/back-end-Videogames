@@ -2,8 +2,13 @@
     "version": 2,
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "/"
+        "src": "/videogames/(.*)",
+        "dest": "/videogames/$1"
+      },
+      {
+        "src": "/genres/(.*)",
+        "dest": "/genres/$1"
       }
     ]
-}
+  }
+  
