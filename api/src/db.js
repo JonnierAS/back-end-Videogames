@@ -3,7 +3,7 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST, DB_PORT , DB_NAME,/* POSTGRE_URL */
+  DB_USER, DB_PASSWORD, DB_HOST, DB_PORT , DB_NAME,POSTGRE_URL
 } = process.env;
 // const POSTGRE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
 const sequelize = new Sequelize(POSTGRE_URL, {
